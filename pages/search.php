@@ -3,7 +3,7 @@ require_once('config.php');
 $recieced_search= $_GET['searched'];  
 // $recieced_search= 'h'; 
 
-// if($recieced_search!=""){ 
+if($recieced_search!=""){ 
  
     $myQuery= "SELECT * FROM studentsdata where admission_no like '%$recieced_search%' OR s_name LIKE '%$recieced_search%' OR  f_name like '%$recieced_search%'or form_b LIKE '%$recieced_search%' OR address LIKE '%$recieced_search%'";
 
@@ -37,5 +37,5 @@ else{
        <td colspan='6' id='noresult' >NO RECORD FOUND</td>
        </tr>";
     }
-// } 
+} 
 ?>

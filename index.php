@@ -6,10 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
-    <link href="assets/bootstrap.css" rel="stylesheet">
+    <!-- <link href="assets/bootstrap.css" rel="stylesheet"> -->
     <title>Ajax_Based_Crud</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
       #noresult{
         text-align: center;
@@ -40,6 +41,7 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
+      <button type="submit" class="btn btn-primary btn-block" id='clicktoadd'>Add</button>
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
       </div>
 
@@ -64,7 +66,7 @@
 </button>
 <br><br>
 
-<table class="table table-sm table-hover">
+<table class="table table-sm table-hover table-bordered">
   <thead>
     <tr>
       <th scope="col">Adm No</th>
@@ -89,8 +91,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-magnify/0.3.0/js/bootstrap-magnify.min.js" integrity="sha512-n1dSnMZ7YxhSyddGMrwME3dwjFV9KpBYAg8Xlkm19rdSMFEmQ4F4tAVzRETkOP9jljMy5s1+lXlZ/6ktLS0SNg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <!-- <script src="assets/jquery.js"></script> -->
+    <script src="assets/jquery.js"></script>
 
     <script>
       $(document).ready(function(){
@@ -113,9 +117,13 @@
             $.ajax({
               method: 'post',
               url: 'pages/search.php',
-              data: {searched:searched},
+              data: {
+                'searched' : searched
+              },
               success:function(response){
+                
                 $('#singlerecord').html(response);
+                
               }
             })
             })
@@ -133,6 +141,7 @@
       });
 
       function clicktoadd(){
+
         var admno= $("#admno").val();
         var name= $("#name").val();
         var fname= $("#fname").val();
