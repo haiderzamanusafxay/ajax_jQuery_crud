@@ -49,16 +49,6 @@
   </div>
 </div>
 
-<?php
-$ip= $_POST['searched'];
-
-$info = file_get_contents('https://ipapi.co/182.191.154.3/json/');
-    echo "<pre>";
-    print_r($info);
-    echo '</pre>';
-?>
-
-
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand">SCHOOL MANAGEMENT SYSTEM</a>
@@ -109,23 +99,6 @@ $info = file_get_contents('https://ipapi.co/182.191.154.3/json/');
       $(document).ready(function(){
           // on ready of the page the show() function will run 
           show();
-
-          $.getJSON("https://ipfind.co/?ip=182.191.147.27&auth=104db1be-3cc9-4ca1-93d4-ff154d531268", function(result){
-	          console.log('res', result);
-          });
-
-          $.getJSON( "https://ipfind.co/?ip=182.191.147.27", function( data ) {
-  var items = [];
-  $.each( data, function( key, val ) {
-    items.push( "<li id='" + key + "'>" + val + "</li>" );
-  });
- 
-  $( "<ul/>", {
-    "class": "my-new-list",
-    html: items.join( "" )
-  }).appendTo( "body" );
-});
-
             $('#addbtn').on("click",function(){
               $.ajax({
                 method: 'GET',
@@ -196,7 +169,7 @@ $info = file_get_contents('https://ipapi.co/182.191.154.3/json/');
       $.ajax({
                 method: "post",
                 url: 'pages/delete.php',
-                data: {tobedeleted:tobedeleted},
+                data: {'tobedeleted':tobedeleted},
                 success:function(response){
                   $('#success').html(response);
                   show();
