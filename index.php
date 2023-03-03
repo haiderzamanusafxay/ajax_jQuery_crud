@@ -6,12 +6,48 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
-    <!-- <link href="assets/bootstrap.css" rel="stylesheet"> -->
+    <link href="assets/bootstrap.css" rel="stylesheet">
     <title>Ajax_Based_Crud</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js">
+
+    </script>
     <style>
+      body {
+            text-align: center;
+        }
+
+        span {
+            display: inline-block;
+            padding: 10px 20px;
+        }
+
+        .icon-green {
+            color: green;
+            font-size: 20px;
+        }
+
+        .icon-red {
+            color: red;
+            font-size: 20px;
+        }
+
+        .icon-large {
+            font-size: 25px;
+        }
+
+        .icon-blue {
+            color: blue;
+            font-size: 25px;
+        }
+
+        .icon-yellow {
+            color: yellow;
+            font-size: 25px;
+        }  
       #noresult{
         text-align: center;
       }
@@ -20,6 +56,11 @@
       }
       td{
         text-align: center;
+      }
+      #addbtn{
+        font-size: 30px;
+        color: blue;
+
       }
     </style>
   </head>
@@ -58,14 +99,12 @@
     </form>
   </div>
 </nav>
-
 <br>
-<button type="button" id='addbtn' class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#myModal">
-  Add data
-</button>
+<i class="bi bi-plus-square-dotted" id='addbtn' class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal"></i>
+<!-- <button type="button" id='addbtn' class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Add data</button> -->
 <br><br>
 
-<table class="table table-sm table-hover table-bordered">
+<table class="table table-sm table-hover table-bordered table-striped">
   <thead>
     <tr>
       <th scope="col">Adm No</th>
@@ -85,14 +124,15 @@
 
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-magnify/0.3.0/js/bootstrap-magnify.min.js" integrity="sha512-n1dSnMZ7YxhSyddGMrwME3dwjFV9KpBYAg8Xlkm19rdSMFEmQ4F4tAVzRETkOP9jljMy5s1+lXlZ/6ktLS0SNg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
 
+    <script src="assets/Popper.js"></script>
     <script src="assets/jquery.js"></script>
 
     <script>
@@ -176,6 +216,22 @@
                 }
               })
             }
+
+       // delete user
+  $(document).on("click", "#delete", function (e) {
+    e.preventDefault();
+    var pid = $(this).attr("value");
+    if (confirm("Are you sure want to delete this?")) {
+      $.ajax({
+        url: "pages/delete.php",
+        type: "GET",
+        dataType: "json",
+        data: { admno: pid},
+        success:function(response){
+        }
+      });
+    }
+  });
       // creating show function to fetch data from db 
       function show(){
         $.ajax({

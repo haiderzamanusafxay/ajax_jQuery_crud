@@ -14,9 +14,8 @@ while($row= mysqli_fetch_assoc($runquery)){
 <td><?php echo $row['form_b'] ?></td>
 <td><?php echo $row['address']; ?></td>
 <td>
-    <button class="badge bg-danger" value="<?php echo $row['admission_no']; ?>" id="delete">Delete<i class="fa fa-trash" aria-hidden="true"></i>
-</button>
-    <span class="badge bg-warning text-dark">Update</span>
+    <i class="bi bi-trash icon-red" value="<?php echo $row['admission_no']; ?>" id="delete"></i>
+    <i class="bi bi-pencil-square icon-green" value="<?php echo $row['admission_no']; ?>" id="update"></i>
 </td>
 </tr>
 <?php

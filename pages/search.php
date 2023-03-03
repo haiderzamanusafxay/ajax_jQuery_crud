@@ -1,6 +1,6 @@
 <?php
 require_once('config.php');
-$recieced_search= $_GET['searched'];  
+$recieced_search= $_POST['searched'];  
 // $recieced_search= 'h'; 
 
 if($recieced_search!=""){ 
@@ -22,8 +22,8 @@ if($recieced_search!=""){
 <td><?php echo $row['form_b'] ?></td>
 <td><?php echo $row['address']; ?></td>
 <td>
-    <span class="badge bg-danger">Delete</span>
-    <span class="badge bg-warning text-dark">Update</span>
+<i class="bi bi-trash icon-red" value="<?php echo $row['admission_no']; ?>" id="delete"></i>
+    <i class="bi bi-pencil-square icon-green" value="<?php echo $row['admission_no']; ?>" id="update"></i>
 </td>
 </tr>
 
