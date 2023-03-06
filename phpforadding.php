@@ -1,5 +1,5 @@
 <?php
-require_once('assets/config.php');
+require_once('pages/config.php');
 
 $admno= $_POST['admno'];
 $name= $_POST['name'];
@@ -14,7 +14,7 @@ $runquery= mysqli_query($conn,$addingquery);
 if ($runquery) {
     echo 'successfully added';
 }else{
-    echo 'there is some error'
+    echo 'there is some error';
 }
 
 ?>
